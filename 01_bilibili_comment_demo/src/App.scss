@@ -1,0 +1,263 @@
+.app {
+    width: 80%;
+    margin: 50px auto;
+  }
+
+.reply-navigation {
+    margin-bottom: 22px;
+  
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+}
+
+.reply-wrap {
+    position: relative;
+}
+
+.box-normal {
+    display: flex;
+    transition: 0.2s;
+
+    .reply-box-avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 50px;
+    }
+
+    .reply-box-wrap {
+        display: flex;
+        position: relative;
+        flex: 1;
+
+        .reply-box-textarea {
+            width: 100%;
+            height: 50px;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            color: #181931;
+            font-family: inherit;
+            line-height: 38px;
+            background-color: #faf2f3;
+            border: 1px solid #faf2f3;
+            outline: none;
+            resize: none;
+            transition: 0.2s;
+        }
+
+        &::placeholder {
+            color: #9499a0;
+            font-size: 12px;
+        }
+
+        &:focus {
+            height: 60px;
+            background-color: #fff;
+            border-color: #c9ccd0;
+          }
+    }
+}
+
+.reply-box-send {
+    // 相对定位，这意味着元素的位置相对于其正常位置进行偏移，但不会影响其他元素的布局。
+    position: relative; 
+    // 将元素的显示类型设置为弹性盒子（flexbox），这是一种布局模式，可以使得子元素能够在不同的方向上进行伸缩和对齐
+    display: flex; 
+    // 设置弹性项目在主轴方向上的初始大小为86像素。
+    flex-basis: 86px;
+    // 在交叉轴上（垂直方向）居中对齐所有子元素。
+    align-items: center;
+    // 在主轴上（水平方向）居中对齐所有子元素。
+    justify-content: center;
+    // 设置元素左侧的外边距为10像素。
+    margin-left: 10px;
+    // 设置元素边框的圆角为4像素。
+    border-radius: 4px;
+    // 将鼠标悬停在元素上时，鼠标指针会变成指针形状，表示可以点击。
+    cursor: pointer;
+    // 设置元素的属性变化有一个0.2秒的过渡效果，这通常用于视觉效果。
+    transition: 0.2s;
+
+    & .send-text {
+        position: absolute;
+        z-index: 1;
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+    }
+
+    /**
+    &::after { ... }：这是一个伪元素规则，用于在 .reply-box-send 元素之后创建一个装饰性的内容。
+    position: absolute;：伪元素的定位设置为绝对定位。
+    width: 100%;：伪元素的宽度设置为100%，即与 .reply-box-send 元素的宽度相同。
+    height: 100%;：伪元素的高度设置为100%，即与 .reply-box-send 元素的高度相同。
+    background-color: #00aeec;：设置伪元素的背景颜色为一种蓝色。
+    border-radius: 4px;：设置伪元素的边框圆角为4像素。
+    opacity: 0.5;：设置伪元素的透明度为0.5，即半透明。
+    content: '';：虽然这里没有实际内容，但这个属性是创建伪元素所必需的。
+    */
+    &::after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #00aeec;
+        border-radius: 4px;
+        opacity: 0.5;
+        content: '';
+    }
+    /*
+    &:hover::after { ... }：这是一个伪类规则，用于设置当鼠标悬停在 .reply-box-send 元素上时，伪元素的样式。
+    opacity: 1;：将伪元素的透明度设置为1，即完全不透明。
+    */
+    &:hover::after {
+        opacity: 1;
+    }
+
+}
+
+.bili-avatar {
+    position: relative;
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.bili-avatar-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border: none;
+    border-radius: 50%;
+    image-rendering: -webkit-optimize-contrast;
+    transform: translate(-50%, -50%);
+}
+
+// 评论列表
+.reply-list {
+    margin-top: 14px;
+}
+
+.reply-item {
+    padding: 22px 0 0 80px;
+    .root-reply-avatar {
+        position: absolute;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        width: 80px;
+        cursor: pointer;
+    }
+
+    .content-wrap {
+        position: relative;
+        flex: 1;
+    }
+
+    &::after {
+        content: ' ';
+        display: block;
+        height: 1px;
+        width: 100%;
+        margin-top: 14px;
+        background-color: #e3e5e7;
+    }
+    &:hover::after {
+        opacity: 1;
+    }
+    .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+  
+        .user-name {
+          height: 30px;
+          margin-right: 5px;
+          color: #61666d;
+          font-size: 13px;
+          line-height: 30px;
+          cursor: pointer;
+        }
+    }
+
+    .root-reply {
+        position: relative;
+        padding: 2px 0;
+        color: #181931;
+        font-size: 15px;
+        line-height: 24px;
+        .reply-info {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: 2px;
+            color: #9499a0;
+            font-size: 13px;
+            .reply-time {
+                width: 86px;
+                margin-right: 20px;
+              }
+              .reply-like {
+                display: flex;
+                align-items: center;
+                margin-right: 19px;
+                .like-icon {
+                    width: 14px;
+                    height: 14px;
+                    margin-right: 5px;
+                    color: #1d59ac;
+                    background-position: -153px -25px;
+                    &:hover {
+                      background-position: -218px -25px;
+                    }
+                }
+                .like-icon.liked {
+                    background-position: -154px -89px;
+                }
+            }
+            .reply-dislike {
+                display: flex;
+                align-items: center;
+                margin-right: 19px;
+                .dislike-icon {
+                  width: 16px;
+                  height: 16px;
+                  background-position: -153px -153px;
+                  &:hover {
+                    background-position: -217px -153px;
+                  }
+                }
+                .dislike-icon.disliked {
+                  background-position: -154px -217px;
+                }
+            }
+            .delete-btn {
+                cursor: pointer;
+                &:hover {
+                  color: #00aeec;
+                }
+            }
+        }    
+    }
+}
+
+.reply-none {
+    height: 64px;
+    margin-bottom: 80px;
+    color: #99a2aa;
+    font-size: 13px;
+    line-height: 64px;
+    text-align: center;
+}
